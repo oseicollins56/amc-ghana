@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AMC GHANA - Leading Supplier of Sunflower Oil. High-quality sunflower oils and fats exported to 40+ countries worldwide." />
+  <title>AMC GHANA | Leading Supplier of Sunflower Oil</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ===== CSS RESET & ROOT VARIABLES ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy:       #0a1f44;
+      --navy-dark:  #071530;
+      --navy-mid:   #122657;
+      --gold:       #c9a84c;
+      --gold-light: #e4c575;
+      --gold-dark:  #a0822e;
+      --white:      #ffffff;
+      --off-white:  #f8f9fc;
+      --light-grey: #eef0f5;
+      --mid-grey:   #9ba5b7;
+      --text-dark:  #1a2740;
+      --text-body:  #4a5568;
+      --shadow-sm:  0 2px 8px rgba(10,31,68,.10);
+      --shadow-md:  0 6px 24px rgba(10,31,68,.14);
+      --shadow-lg:  0 16px 48px rgba(10,31,68,.18);
+      --radius:     10px;
+      --radius-lg:  18px;
+      --transition: .3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a  { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== UTILITY ===== */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-body);
+      max-width: 600px;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-header.centered {
+      text-align: center;
+    }
+
+    .section-header.centered .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .divider {
+      width: 56px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      margin-bottom: 1.4rem;
+    }
+
+    .divider.centered { margin-left: auto; margin-right: auto; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.75rem;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--white);
+      border-color: transparent;
+      box-shadow: 0 4px 14px rgba(201,168,76,.35);
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      box-shadow: 0 6px 20px rgba(201,168,76,.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.7);
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--white);
+    }
+
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    .btn-navy:hover {
+      background: var(--navy-dark);
+      border-color: var(--navy-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ===== HEADER / NAV ===== */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+      padding: 1.4rem 0;
+    }
+
+    #header.scrolled {
+      background: var(--navy-dark);
+      box-shadow: var(--shadow-md);
+      padding: .9rem 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-name {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: .04em;
+    }
+
+    .logo-name span { color: var(--gold); }
+
+    .logo-tagline {
+      font-size: .65rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.72);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.88);
+      font-size: .88rem;
+      font-weight: 500;
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta { margin-left: .5rem; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .25rem;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    /* Mobile Nav Overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--navy-dark);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+    }
+
+    .mobile-nav a {
+      color: var(--white);
+      font-size: 1.4rem;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+
+    .mobile-nav a:hover { color: var(--gold); }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--navy-dark);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: .18;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(7,21,48,.92) 0%, rgba(10,31,68,.75) 60%, rgba(18,38,87,.5) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 7rem 0 5rem;
+      max-width: 740px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(201,168,76,.15);
+      border: 1px solid rgba(201,168,76,.4);
+      color: var(--gold-light);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-title span { color: var(--gold); }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.8);
+      max-width: 580px;
+      margin-bottom: 2.2rem;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    .hero-stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: .78rem;
+      color: rgba(255,255,255,.65);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-top: .25rem;
+    }
+
+    /* ===== ABOUT ===== */
+    #about {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-wrap img {
+      border-radius: var(--radius-lg);
+      width: 100%;
+      object-fit: cover;
+      height: 480px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-badge-float {
+      position: absolute;
+      bottom: -22px;
+      right: -22px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 1.4rem 1.6rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      min-width: 130px;
+    }
+
+    .about-badge-float .num {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--gold);
+      display: block;
+    }
+
+    .about-badge-float .lbl {
+      font-size: .72rem;
+      opacity: .85;
+      letter-spacing: .05em;
+    }
+
+    .about-text .section-subtitle {
+      margin-bottom: 1.6rem;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .highlight-card {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      transition: var(--transition);
+    }
+
+    .highlight-card:hover {
+      background: var(--light-grey);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .highlight-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: .9rem;
+    }
+
+    .highlight-text strong {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    .highlight-text span {
+      font-size: .74rem;
+      color: var(--mid-grey);
+    }
+
+    /* ===== BRANDS ===== */
+    #brands {
+      padding: 7rem 0;
+      background: var(--off-white);
+    }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .brand-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.8rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--light-grey);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+
+    .brand-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .brand-card:hover::before { transform: scaleX(1); }
+
+    .brand-card.featured {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: var(--white);
+    }
+
+    .brand-card.featured::before { transform: scaleX(1); }
+
+    .brand-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.4rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: .04em;
+    }
+
+    .brand-card.featured .brand-logo {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    }
+
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: .5rem;
+    }
+
+    .brand-card.featured .brand-name { color: var(--white); }
+
+    .brand-desc {
+      font-size: .875rem;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    .brand-card.featured .brand-desc { color: rgba(255,255,255,.75); }
+
+    .brand-tag {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: .3rem .85rem;
+      border-radius: 50px;
+      background: rgba(201,168,76,.12);
+      color: var(--gold-dark);
+    }
+
+    .brand-card.featured .brand-tag {
+      background: rgba(201,168,76,.2);
+      color: var(--gold-light);
+    }
+
+    /* ===== PRODUCTS ===== */
+    #products {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--light-grey);
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .product-card:hover .product-img { transform: scale(1.06); }
+
+    .product-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--navy);
+      color: var(--gold);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .28rem .7rem;
+      border-radius: 50px;
+    }
+
+    .product-body {
+      padding: 1.4rem 1.5rem 1.6rem;
+    }
+
+    .product-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: .45rem;
+    }
+
+    .product-desc {
+      font-size: .83rem;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    .product-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .9rem;
+    }
+
+    .spec-pill {
+      font-size: .7rem;
+      font-weight: 500;
+      background: var(--light-grey);
+      color: var(--navy);
+      padding: .22rem .65rem;
+      border-radius: 50px;
+    }
+
+    /* ===== QUALITY ===== */
+    #quality {
+      padding: 7rem 0;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #quality::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(201,168,76,.06);
+    }
+
+    #quality::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -60px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.03);
+    }
+
+    .quality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quality-text .section-title { color: var(--white); }
+    .quality-text .section-subtitle { color: rgba(255,255,255,.75); }
+    .quality-text .divider { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+
+    .quality-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 1.8rem;
+    }
+
+    .quality-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .quality-feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(201,168,76,.15);
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .quality-feature-title {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+
+    .quality-feature-desc {
+      font-size: .82rem;
+      color: rgba(255,255,255,.65);
+      line-height: 1.6;
+    }
+
+    .quality-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .quality-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .quality-card:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(201,168,76,.4);
+    }
+
+    .quality-card-icon {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+
+    .quality-card-title {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .4rem;
+    }
+
+    .quality-card-text {
+      font-size: .76rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.55;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      padding: 7rem 0;
+      background: var(--off-white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--mid-grey);
+    }
+
+    .contact-item-value {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-top: .1rem;
+    }
+
+    .contact-social {
+      display: flex;
+      gap: .75rem;
+      margin-top: .5rem;
+    }
+
+    .social-link {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Form */
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.8rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 1.6rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      letter-spacing: .02em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: 'Poppins', sans-serif;
+      font-size: .88rem;
+      color: var(--text-dark);
+      background: var(--off-white);
+      border: 1.5px solid var(--light-grey);
+      border-radius: var(--radius);
+      padding: .72rem 1rem;
+      transition: var(--transition);
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy-mid);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(18,38,87,.1);
+    }
+
+    .form-group input.error,
+    .form-group textarea.error {
+      border-color: #e53e3e;
+    }
+
+    .field-error {
+      font-size: .74rem;
+      color: #e53e3e;
+      display: none;
+    }
+
+    .field-error.visible { display: block; }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    #form-status {
+      font-size: .84rem;
+      font-weight: 500;
+      padding: .5rem 1rem;
+      border-radius: var(--radius);
+      display: none;
+    }
+
+    #form-status.success {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: #e6f4ea;
+      color: #276749;
+    }
+
+    #form-status.error {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: #fff5f5;
+      color: #c53030;
+    }
+
+    /* ===== FOOTER ===== */
+    #footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,.75);
+      padding: 5rem 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .footer-brand .logo-name { font-size: 1.3rem; }
+
+    .footer-desc {
+      font-size: .83rem;
+      margin-top: .8rem;
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: .6rem;
+      margin-top: 1.2rem;
+    }
+
+    .footer-col-title {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+    }
+
+    .footer-links a {
+      font-size: .83rem;
+      color: rgba(255,255,255,.65);
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .footer-links a i { font-size: .6rem; color: var(--gold); }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-contact-item {
+      display: flex;
+      gap: .75rem;
+      margin-bottom: .9rem;
+    }
+
+    .footer-contact-item i {
+      color: var(--gold);
+      font-size: .85rem;
+      margin-top: .18rem;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-item span {
+      font-size: .82rem;
+      color: rgba(255,255,255,.65);
+      line-height: 1.55;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      flex-wrap: wrap;
+      gap: .8rem;
+    }
+
+    .footer-copy {
+      font-size: .78rem;
+      color: rgba(255,255,255,.45);
+    }
+
+    .footer-copy a {
+      color: var(--gold);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 1.4rem;
+    }
+
+    .footer-legal a {
+      font-size: .76rem;
+      color: rgba(255,255,255,.45);
+      transition: color var(--transition);
+    }
+
+    .footer-legal a:hover { color: rgba(255,255,255,.75); }
+
+    /* ===== SCROLL-TO-TOP ===== */
+    #scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      box-shadow: 0 4px 14px rgba(201,168,76,.5);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity var(--transition), transform var(--transition);
+      z-index: 900;
+    }
+
+    #scroll-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #scroll-top:hover {
+      background: var(--gold-dark);
+      box-shadow: 0 6px 20px rgba(201,168,76,.65);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .about-grid,
+      .quality-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .about-image-wrap img { height: 360px; }
+
+      .about-badge-float { bottom: -18px; right: -10px; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .brands-grid { grid-template-columns: 1fr; }
+
+      .about-highlights { grid-template-columns: 1fr; }
+
+      .quality-cards { grid-template-columns: 1fr; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr; }
+
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .hero-stats { gap: 1.8rem; }
+
+      .contact-form-wrap { padding: 1.8rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { justify-content: center; }
+      .about-badge-float { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="header">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="#hero" class="logo">
+        <span class="logo-name">AMC <span>GHANA</span></span>
+        <span class="logo-tagline">Leading Supplier of Sunflower Oil</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="btn btn-gold nav-cta">
+        <i class="fas fa-envelope"></i> Contact Us For Prices
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#hero" class="mobile-link">Home</a>
+  <a href="#about" class="mobile-link">About Us</a>
+  <a href="#products" class="mobile-link">Products</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn btn-gold" style="margin-top:.5rem">Contact Us For Prices</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-seedling"></i> ISO 22000 Certified
+      </div>
+      <h1 class="hero-title">
+        High-Quality<br />
+        <span>Sunflower Oils</span><br />
+        and Fats
+      </h1>
+      <p class="hero-desc">
+        Welcome to AMC GHANA. Your Partner for high-quality Sunflower Oils and Fats.
+        AMC GHANA is a Subsidiary Branch of AMC Polska, a Polish full-service export
+        supplier of high-quality sunflower oils and fats.
+      </p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-gold">
+          <i class="fas fa-boxes"></i> Our Products
+        </a>
+        <a href="#contact" class="btn btn-outline-white">
+          <i class="fas fa-envelope"></i> Contact Us For Prices
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">40+</div>
+          <div class="hero-stat-label">Countries Served</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">25+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">ISO</div>
+          <div class="hero-stat-label">22000 Certified</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">2</div>
+          <div class="hero-stat-label">Premium Brands</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-image-wrap fade-up">
+        <img
+          src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80"
+          alt="Sunflower fields - AMC GHANA quality sourcing"
+        />
+        <div class="about-badge-float">
+          <span class="num">40+</span>
+          <span class="lbl">Countries<br/>Worldwide</span>
+        </div>
+      </div>
+
+      <div class="about-text fade-up">
+        <span class="section-tag">Our Story</span>
+        <div class="divider"></div>
+        <h2 class="section-title">Africa's Trusted Partner for Premium Edible Oils</h2>
+        <p class="section-subtitle">
+          AMC GHANA is the West African subsidiary of AMC Polska — a Polish full-service export
+          company with decades of experience supplying premium sunflower oils and fats to global markets.
+          We bring European quality directly to Ghana and the wider African continent.
+        </p>
+        <p class="section-subtitle" style="margin-top:.8rem">
+          Our products meet the strictest European food safety standards, and we work with leading
+          retailers, manufacturers, and distributors across more than 40 countries. From commodity
+          bulk supply to custom private-label packaging, AMC GHANA is your end-to-end edible oils partner.
+        </p>
+
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-globe-africa"></i></div>
+            <div class="highlight-text">
+              <strong>Global Reach</strong>
+              <span>Export to 40+ countries</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-certificate"></i></div>
+            <div class="highlight-text">
+              <strong>ISO 22000</strong>
+              <span>Certified quality system</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-industry"></i></div>
+            <div class="highlight-text">
+              <strong>AMC Polska</strong>
+              <span>Parent company, Poland</span>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon"><i class="fas fa-tags"></i></div>
+            <div class="highlight-text">
+              <strong>Own Brands</strong>
+              <span>ELBURG &amp; UNOLI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== BRANDS ===== -->
+<section id="brands">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-tag">Our Brands</span>
+      <div class="divider centered"></div>
+      <h2 class="section-title">Trusted Names in Edible Oils</h2>
+      <p class="section-subtitle">
+        AMC GHANA markets its products under two internationally recognised brands,
+        as well as offering full private-label solutions for retail and industrial clients.
+      </p>
+    </div>
+
+    <div class="brands-grid">
+
+      <div class="brand-card fade-up">
+        <div class="brand-logo">EL</div>
+        <div class="brand-name">ELBURG</div>
+        <p class="brand-desc">
+          ELBURG is AMC's flagship premium sunflower oil brand, trusted by
+          households and food manufacturers alike. Refined, bleached, and
+          deodorised to the highest European standards.
+        </p>
+        <span class="brand-tag">Premium Grade</span>
+      </div>
+
+      <div class="brand-card featured fade-up">
+        <div class="brand-logo">UN</div>
+        <div class="brand-name">UNOLI</div>
+        <p class="brand-desc">
+          UNOLI is our value-conscious sunflower oil brand — full food-grade
+          quality without compromise. Ideal for bulk cooking oil markets and
+          large-scale food service operations.
+        </p>
+        <span class="brand-tag">Food Service Grade</span>
+      </div>
+
+      <div class="brand-card fade-up">
+        <div class="brand-logo"><i class="fas fa-flask" style="font-size:1.1rem;font-weight:400"></i></div>
+        <div class="brand-name">Private Label</div>
+        <p class="brand-desc">
+          We manufacture, bottle, and brand edible oils under your own label.
+          Custom bottle sizes, label design support, and flexible MOQs for
+          retailers and distributors.
+        </p>
+        <span class="brand-tag">Custom Solutions</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-tag">Our Products</span>
+      <div class="divider centered"></div>
+      <h2 class="section-title">Our Product Range</h2>
+      <p class="section-subtitle">
+        From crude to fully refined, we supply a comprehensive range of edible oils and fats.
+        All products are available in bulk tanker, IBC, drum, and consumer packaging formats.
+      </p>
+    </div>
+
+    <div class="products-grid">
+
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img
+            class="product-img"
+            src="https://images.unsplash.com/photo-1616670998264-6b7a5c70a4f0?w=600&q=75"
+            alt="Refined Sunflower Oil"
+          />
+          <span class="product-badge">Bestseller</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">RBD Sunflower Oil</h3>
+          <p class="product-desc">
+            Refined, Bleached & Deodorised sunflower oil — crystal clear, neutral
+            taste, and high smoke point. Perfect for frying, baking, and general cooking.
+          </p>
+          <div class="product-specs">
+            <span class="spec-pill">Bulk / IBC</span>
+            <span class="spec-pill">ISO 22000</span>
+            <span class="spec-pill">Non-GMO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img
+            class="product-img"
+            src="https://images.unsplash.com/photo-1601493700631-2851b10a6958?w=600&q=75"
+            alt="Crude Sunflower Oil"
+          />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Crude Sunflower Oil</h3>
+          <p class="product-desc">
+            First-press crude sunflower oil for industrial refining and processing.
+            Available in bulk tanker shipments at competitive export pricing.
+          </p>
+          <div class="product-specs">
+            <span class="spec-pill">Bulk Tanker</span>
+            <span class="spec-pill">Industrial</span>
+            <span class="spec-pill">Export Grade</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img
+            class="product-img"
+            src="https://images.unsplash.com/photo-1631378813399-da97e57f5e36?w=600&q=75"
+            alt="Hydrogenated Vegetable Fat"
+          />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Hydrogenated Vegetable Fat</h3>
+          <p class="product-desc">
+            Fully and partially hydrogenated fats for bakery, confectionery,
+            and margarine manufacture. Custom iodine value to specification.
+          </p>
+          <div class="product-specs">
+            <span class="spec-pill">Bakery Grade</span>
+            <span class="spec-pill">Custom IV</span>
+            <span class="spec-pill">Drum / Bulk</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img
+            class="product-img"
+            src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=600&q=75"
+            alt="Palm Oil Products"
+          />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">RBD Palm Olein</h3>
+          <p class="product-desc">
+            High-quality refined palm olein for frying applications.
+            Excellent oxidative stability with low free fatty acid content,
+            ideal for the food industry.
+          </p>
+          <div class="product-specs">
+            <span class="spec-pill">Frying Grade</span>
+            <span class="spec-pill">Low FFA</span>
+            <span class="spec-pill">IBC / Drum</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img
+            class="product-img"
+            src="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?w=600&q=75"
+            alt="Corn Oil"
+          />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">RBD Corn Oil</h3>
+          <p class="product-desc">
+            Refined corn (maize) oil with a light colour and mild taste.
+            Rich in polyunsaturated fatty acids. Suitable for all cooking methods.
+          </p>
+          <div class="product-specs">
+            <span class="spec-pill">Light Colour</span>
+            <span class="spec-pill">PUFA-Rich</span>
+            <span class="spec-pill">Consumer / Bulk</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img
+            class="product-img"
+            src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=75"
+            alt="Coconut Oil"
+          />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">RBD Coconut Oil</h3>
+          <p class="product-desc">
+            Refined coconut oil for food manufacturing, cosmetics,
+            and pharmaceutical applications. Odourless and pure white with
+            high lauric acid content.
+          </p>
+          <div class="product-specs">
+            <span class="spec-pill">Food / Pharma</span>
+            <span class="spec-pill">High Lauric</span>
+            <span class="spec-pill">Drum / Tote</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:3rem">
+      <a href="#contact" class="btn btn-navy">
+        <i class="fas fa-envelope"></i> Request Product Specifications & Pricing
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUALITY ===== -->
+<section id="quality">
+  <div class="container">
+    <div class="quality-grid">
+
+      <div class="quality-text fade-up">
+        <span class="section-tag">Quality Assurance</span>
+        <div class="divider"></div>
+        <h2 class="section-title">European Standards.<br/>African Reliability.</h2>
+        <p class="section-subtitle">
+          Every product we supply is manufactured and tested to meet European food safety
+          regulations — giving our African clients the same assurance demanded by
+          the world's most rigorous retail chains.
+        </p>
+
+        <div class="quality-features">
+          <div class="quality-feature">
+            <div class="quality-feature-icon"><i class="fas fa-award"></i></div>
+            <div>
+              <div class="quality-feature-title">ISO 22000 Food Safety Management</div>
+              <div class="quality-feature-desc">
+                Our parent company AMC Polska holds ISO 22000 certification — the international
+                benchmark for food safety management systems.
+              </div>
+            </div>
+          </div>
+          <div class="quality-feature">
+            <div class="quality-feature-icon"><i class="fas fa-flask"></i></div>
+            <div>
+              <div class="quality-feature-title">Rigorous Laboratory Testing</div>
+              <div class="quality-feature-desc">
+                Every batch undergoes full analytical testing: FFA, peroxide value, moisture,
+                colour, and contaminant screening before dispatch.
+              </div>
+            </div>
+          </div>
+          <div class="quality-feature">
+            <div class="quality-feature-icon"><i class="fas fa-shipping-fast"></i></div>
+            <div>
+              <div class="quality-feature-title">Reliable Global Logistics</div>
+              <div class="quality-feature-desc">
+                We handle full export documentation, phytosanitary certificates, and
+                direct port delivery to Tema, Accra and major West African ports.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quality-cards fade-up">
+        <div class="quality-card">
+          <div class="quality-card-icon"><i class="fas fa-certificate"></i></div>
+          <div class="quality-card-title">ISO 22000</div>
+          <div class="quality-card-text">Internationally recognised food safety management certification</div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-card-icon"><i class="fas fa-leaf"></i></div>
+          <div class="quality-card-title">Non-GMO</div>
+          <div class="quality-card-text">Natural sourcing with full traceability from field to bottle</div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-card-icon"><i class="fas fa-box-open"></i></div>
+          <div class="quality-card-title">Custom Packaging</div>
+          <div class="quality-card-text">Retail, IBC, drum, and bulk tanker — all sizes available</div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-card-icon"><i class="fas fa-handshake"></i></div>
+          <div class="quality-card-title">Private Label</div>
+          <div class="quality-card-text">Full brand manufacturing service for distributors and retailers</div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-card-icon"><i class="fas fa-globe"></i></div>
+          <div class="quality-card-title">40+ Countries</div>
+          <div class="quality-card-text">Proven export experience across Africa, Europe, Asia & the Americas</div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-card-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="quality-card-title">EU Compliant</div>
+          <div class="quality-card-text">Products meet all European Union food safety regulations</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-tag">Get In Touch</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Contact Us For Prices</h2>
+      <p class="section-subtitle">
+        Ready to source premium edible oils? Send us your inquiry and our team
+        will respond within one business day with product specs and competitive pricing.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-info fade-up">
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-item-label">Office Address</div>
+            <div class="contact-item-value">Accra, Ghana<br/>West Africa</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-item-label">Email Us</div>
+            <div class="contact-item-value">info@amcghana.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-item-label">Phone / WhatsApp</div>
+            <div class="contact-item-value">+233 XX XXX XXXX</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-building"></i></div>
+          <div>
+            <div class="contact-item-label">Head Office</div>
+            <div class="contact-item-value">AMC Polska Sp. z o.o.<br/>Poland, European Union</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="contact-item-label" style="margin-bottom:.6rem">Follow Us</div>
+          <div class="contact-social">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap fade-up">
+        <div class="form-title">Send Us Your Inquiry</div>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name *</label>
+              <input type="text" id="fname" name="fname" placeholder="John" />
+              <span class="field-error" id="fname-error">Please enter your first name.</span>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name *</label>
+              <input type="text" id="lname" name="lname" placeholder="Mensah" />
+              <span class="field-error" id="lname-error">Please enter your last name.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="john@company.com" />
+            <span class="field-error" id="email-error">Please enter a valid email address.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company / Organisation</label>
+            <input type="text" id="company" name="company" placeholder="Your Company Ltd." />
+          </div>
+
+          <div class="form-group">
+            <label for="product">Product of Interest</label>
+            <select id="product" name="product">
+              <option value="">— Select a product —</option>
+              <option>RBD Sunflower Oil</option>
+              <option>Crude Sunflower Oil</option>
+              <option>Hydrogenated Vegetable Fat</option>
+              <option>RBD Palm Olein</option>
+              <option>RBD Corn Oil</option>
+              <option>RBD Coconut Oil</option>
+              <option>Private Label Solution</option>
+              <option>Other / General Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Please describe your requirements — product, quantity, destination, packaging preferences..."></textarea>
+            <span class="field-error" id="message-error">Please enter your message.</span>
+          </div>
+
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-gold" id="submit-btn">
+              <i class="fas fa-paper-plane"></i> Send Inquiry
+            </button>
+            <div id="form-status"></div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-name">AMC <span>GHANA</span></span>
+          <span class="logo-tagline">Leading Supplier of Sunflower Oil</span>
+        </div>
+        <p class="footer-desc">
+          AMC GHANA is the West African subsidiary of AMC Polska — your trusted partner
+          for premium, ISO-certified sunflower oils and edible fats.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#hero"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="#brands"><i class="fas fa-chevron-right"></i> Our Brands</a></li>
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
+          <li><a href="#quality"><i class="fas fa-chevron-right"></i> Quality</a></li>
+          <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Products</div>
+        <ul class="footer-links">
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> RBD Sunflower Oil</a></li>
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> Crude Sunflower Oil</a></li>
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> Hydrogenated Fat</a></li>
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> RBD Palm Olein</a></li>
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> RBD Corn Oil</a></li>
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> RBD Coconut Oil</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Accra, Ghana<br />West Africa</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>info@amcghana.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+233 XX XXX XXXX</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-globe"></i>
+          <span>www.amcpolska.com</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; <span id="year"></span> AMC GHANA. A subsidiary of
+        <a href="https://amcpolska.com" target="_blank" rel="noopener">AMC Polska Sp. z o.o.</a>
+        All rights reserved.
+      </p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll-to-top -->
+<button id="scroll-top" aria-label="Scroll to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* --- Year --- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* --- Sticky Header --- */
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* --- Active Nav Link on Scroll --- */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  function updateActiveLink() {
+    const scrollY = window.scrollY + 100;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+      if (link) {
+        if (scrollY >= top && scrollY < top + height) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+  /* --- Mobile Hamburger --- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  let navOpen = false;
+
+  function openMobileNav() {
+    navOpen = true;
+    hamburger.classList.add('open');
+    mobileNav.style.display = 'flex';
+    requestAnimationFrame(() => mobileNav.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    navOpen = false;
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      if (!navOpen) mobileNav.style.display = 'none';
+    }, 300);
+  }
+
+  hamburger.addEventListener('click', () => {
+    if (navOpen) closeMobileNav(); else openMobileNav();
+  });
+
+  document.querySelectorAll('.mobile-link, .mobile-nav .btn').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navOpen) closeMobileNav();
+  });
+
+  /* --- Scroll-to-Top --- */
+  const scrollTopBtn = document.getElementById('scroll-top');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* --- Fade-Up Intersection Observer --- */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  fadeEls.forEach(el => fadeObserver.observe(el));
+
+  /* --- Contact Form Validation --- */
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+
+  function setError(fieldId, errorId, show) {
+    const field = document.getElementById(fieldId);
+    const errEl = document.getElementById(errorId);
+    if (!field || !errEl) return;
+    if (show) {
+      field.classList.add('error');
+      errEl.classList.add('visible');
+    } else {
+      field.classList.remove('error');
+      errEl.classList.remove('visible');
+    }
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function clearStatus() {
+    statusEl.textContent = '';
+    statusEl.className = '';
+    statusEl.style.display = 'none';
+  }
+
+  // Live clear on input
+  ['fname','lname','email','message'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => setError(id, id + '-error', false));
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    clearStatus();
+
+    const fname   = document.getElementById('fname').value.trim();
+    const lname   = document.getElementById('lname').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    let valid = true;
+
+    if (!fname)              { setError('fname',   'fname-error',   true); valid = false; }
+    if (!lname)              { setError('lname',   'lname-error',   true); valid = false; }
+    if (!validateEmail(email)) { setError('email', 'email-error',   true); valid = false; }
+    if (!message)            { setError('message', 'message-error', true); valid = false; }
+
+    if (!valid) return;
+
+    // Simulate submission
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Inquiry';
+      form.reset();
+      statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your inquiry has been sent. We\'ll respond within one business day.';
+      statusEl.className = 'success';
+      statusEl.style.display = 'flex';
+
+      // Hide after 6s
+      setTimeout(clearStatus, 6000);
+    }, 1600);
+  });
+</script>
+
+</body>
+</html>
