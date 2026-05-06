@@ -257,23 +257,6 @@
     max-width: 700px;
   }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    background: rgba(212,160,23,.2);
-    border: 1px solid rgba(212,160,23,.5);
-    color: var(--gold-light);
-    font-size: .74rem;
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    padding: .42rem 1.1rem;
-    border-radius: 50px;
-    margin-bottom: 1.6rem;
-    backdrop-filter: blur(6px);
-  }
-
   .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.6rem, 6vw, 5rem);
@@ -503,106 +486,6 @@
   .spec-row i { color: var(--gold); width: 18px; text-align: center; flex-shrink: 0; }
   .spec-row strong { font-size: .82rem; font-weight: 700; color: var(--text-dark); min-width: 120px; }
   .spec-row span { font-size: .82rem; color: var(--text-body); }
-
-  /* Product packaging cards */
-  .packaging-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
-  }
-
-  .pack-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.8rem 1.2rem;
-    text-align: center;
-    transition: var(--transition);
-  }
-
-  .pack-card:hover { border-color: var(--gold); box-shadow: var(--shadow-sm); transform: translateY(-4px); }
-
-  .pack-icon {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--green-dark), var(--green));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold-light);
-    font-size: 1.2rem;
-    margin: 0 auto 1rem;
-  }
-
-  .pack-name { font-size: .9rem; font-weight: 700; color: var(--text-dark); margin-bottom: .3rem; }
-  .pack-detail { font-size: .78rem; color: var(--text-muted); }
-
-  /* ═══════════════════════════════════════════
-     WHY CHOOSE US
-  ═══════════════════════════════════════════ */
-  #why {
-    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-dark) 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  #why::before {
-    content: '';
-    position: absolute;
-    top: -120px; right: -80px;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: rgba(212,160,23,.06);
-    pointer-events: none;
-  }
-
-  #why::after {
-    content: '';
-    position: absolute;
-    bottom: -100px; left: -60px;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.03);
-    pointer-events: none;
-  }
-
-  .why-header .heading-xl { color: var(--white); }
-  .why-header .body-text { color: rgba(255,255,255,.72); max-width: 580px; margin: 0 auto; }
-  .why-header { text-align: center; margin-bottom: 4rem; }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .why-card {
-    background: rgba(255,255,255,.07);
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: var(--radius-lg);
-    padding: 2.2rem 1.8rem;
-    transition: var(--transition);
-  }
-
-  .why-card:hover { background: rgba(255,255,255,.12); border-color: rgba(212,160,23,.4); transform: translateY(-4px); }
-
-  .why-icon {
-    width: 54px; height: 54px;
-    border-radius: 14px;
-    background: rgba(212,160,23,.18);
-    border: 1px solid rgba(212,160,23,.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gold-light);
-    font-size: 1.2rem;
-    margin-bottom: 1.3rem;
-  }
-
-  .why-title { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: .5rem; }
-  .why-desc { font-size: .85rem; color: rgba(255,255,255,.65); line-height: 1.7; }
 
   /* ═══════════════════════════════════════════
      BRANDS
@@ -1018,6 +901,8 @@
   /* ═══════════════════════════════════════════
      RESPONSIVE
   ═══════════════════════════════════════════ */
+
+  /* ── Tablet ── */
   @media (max-width: 1024px) {
     .about-grid,
     .product-hero,
@@ -1025,50 +910,122 @@
     .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
 
     .about-float-card { bottom: -16px; right: -12px; }
-    .about-img-wrap img, .product-hero-img img { height: 360px; }
-
-    .why-grid { grid-template-columns: 1fr 1fr; }
-
-    .packaging-grid { grid-template-columns: 1fr 1fr; }
+    .about-img-wrap img, .product-hero-img img { height: 340px; }
 
     .footer-grid { grid-template-columns: 1fr 1fr; }
 
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-item.tall { grid-row: span 1; }
+
+    .brands-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
 
+  /* ── Mobile (≤ 768px) ── */
   @media (max-width: 768px) {
+    /* Layout */
+    .section-pad { padding: 4rem 0; }
+    .container { width: 92%; }
+
+    /* Nav */
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
 
-    .brands-grid { grid-template-columns: 1fr; }
+    /* Hero */
+    .hero-content { padding: 7rem 0 3.5rem; max-width: 100%; }
+    .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+    .hero-desc { font-size: .95rem; }
+    .hero-btns { flex-direction: column; gap: .75rem; }
+    .hero-btns .btn { justify-content: center; width: 100%; padding: .9rem 1.5rem; font-size: .95rem; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      padding-top: 1.8rem;
+    }
+    .hero-stat-num { font-size: 1.9rem; }
 
+    /* About */
+    .about-img-wrap img { height: 260px; }
+    .about-float-card { display: none; }
     .about-highlights { grid-template-columns: 1fr; }
 
-    .why-grid { grid-template-columns: 1fr; }
+    /* Product */
+    .product-hero { gap: 2rem; }
+    .product-hero-img img { height: 240px; }
+    .spec-row strong { min-width: 100px; }
+    .product-hero > div:last-child > div[style] { flex-direction: column; }
+    .product-hero > div:last-child > div[style] .btn { justify-content: center; }
 
-    .packaging-grid { grid-template-columns: 1fr 1fr; }
+    /* Brands */
+    .brands-grid { grid-template-columns: 1fr; gap: 1.2rem; }
 
+    /* Gallery */
+    .gallery-grid { grid-template-columns: 1fr 1fr; gap: .6rem; }
+    .gallery-item img { min-height: 150px; }
+
+    /* Quality */
     .cert-cards { grid-template-columns: 1fr 1fr; }
 
+    /* Contact */
+    .contact-grid { gap: 2.5rem; }
     .form-row { grid-template-columns: 1fr; }
+    .form-wrap { padding: 1.6rem; }
 
-    .footer-grid { grid-template-columns: 1fr; }
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; gap: .5rem; }
+    .footer-desc { max-width: 100%; }
 
-    .footer-bottom { flex-direction: column; text-align: center; }
-
-    .hero-stats { gap: 1.8rem; }
-
-    .form-wrap { padding: 1.8rem; }
-
-    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    /* Floating buttons */
+    .wa-float { bottom: 1.2rem; right: 1.2rem; width: 52px; height: 52px; font-size: 1.4rem; }
+    #scroll-top { bottom: 4.5rem; right: 1.2rem; }
   }
 
+  /* ── Small phones (≤ 480px) ── */
   @media (max-width: 480px) {
-    .hero-btns { flex-direction: column; }
-    .hero-btns .btn { justify-content: center; }
-    .about-float-card { display: none; }
-    .packaging-grid { grid-template-columns: 1fr 1fr; }
+    .container { width: 94%; }
+
+    /* Hero */
+    .hero-title { font-size: 1.85rem; line-height: 1.15; }
+    .hero-desc { font-size: .88rem; }
+    .hero-stat-num { font-size: 1.6rem; }
+    .hero-stat-label { font-size: .65rem; }
+
+    /* Sections */
+    .heading-xl { font-size: 1.7rem; }
+    .heading-lg { font-size: 1.4rem; }
+
+    /* About */
+    .about-img-wrap img { height: 220px; }
+    .highlight-pill { padding: .75rem .9rem; }
+
+    /* Product */
+    .product-hero-img img { height: 200px; }
+    .spec-row { padding: .7rem .8rem; }
+    .spec-row strong { min-width: 80px; font-size: .78rem; }
+    .spec-row span { font-size: .78rem; }
+
+    /* Gallery */
+    .gallery-grid { grid-template-columns: 1fr; }
+
+    /* Quality */
+    .cert-cards { grid-template-columns: 1fr 1fr; }
+
+    /* Brands */
+    .brand-card { padding: 2rem 1.5rem; }
+
+    /* Buttons — ensure tap targets ≥ 44px */
+    .btn { min-height: 44px; padding: .75rem 1.4rem; font-size: .88rem; }
+
+    /* Form */
+    .form-wrap { padding: 1.2rem; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { font-size: .9rem; padding: .75rem .9rem; }
+
+    /* Contact cards */
+    .contact-card { padding: 1rem 1.1rem; }
+    .contact-card-value { font-size: .85rem; }
   }
   </style>
 </head>
@@ -1120,9 +1077,6 @@
   <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge">
-        <i class="fas fa-seedling"></i> ISO 22000 Certified · AMC Polska Partner
-      </div>
       <h1 class="hero-title">
         Premium <em>Sunflower Oil</em><br/>Delivered Across Africa
       </h1>
@@ -1308,82 +1262,6 @@
       </div>
     </div>
 
-    <!-- Packaging options -->
-    <div style="margin-top:5rem">
-      <div style="text-align:center; margin-bottom:2.5rem">
-        <div class="label">Packaging Options</div>
-        <div class="gold-bar center"></div>
-        <h3 class="heading-lg" style="font-size:1.6rem">Available in Every Format</h3>
-      </div>
-
-      <div class="packaging-grid fade-up">
-        <div class="pack-card">
-          <div class="pack-icon"><i class="fas fa-ship"></i></div>
-          <div class="pack-name">Bulk Tanker</div>
-          <div class="pack-detail">Full tanker loads · FCL export · Tema Port delivery</div>
-        </div>
-        <div class="pack-card">
-          <div class="pack-icon"><i class="fas fa-cube"></i></div>
-          <div class="pack-name">IBC Tote</div>
-          <div class="pack-detail">1,000 litre intermediate bulk containers</div>
-        </div>
-        <div class="pack-card">
-          <div class="pack-icon"><i class="fas fa-oil-drum"></i></div>
-          <div class="pack-name">200L Drum</div>
-          <div class="pack-detail">Standard steel drums · ideal for distributors</div>
-        </div>
-        <div class="pack-card">
-          <div class="pack-icon"><i class="fas fa-shopping-bottle" style="font-size:1rem"><i class="fas fa-store"></i></i></div>
-          <div class="pack-name">Retail Bottles</div>
-          <div class="pack-detail">500ml · 1L · 2L · 5L · private-label ready</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ WHY CHOOSE US ═══════ -->
-<section id="why" class="section-pad">
-  <div class="container">
-    <div class="why-header fade-up">
-      <div class="label" style="color:var(--gold-light)">Why AMC Ghana</div>
-      <div class="gold-bar center"></div>
-      <h2 class="heading-xl" style="color:var(--white)">The AMC Difference</h2>
-      <p class="body-text">Six reasons food businesses across West Africa choose us.</p>
-    </div>
-
-    <div class="why-grid">
-      <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-award"></i></div>
-        <div class="why-title">ISO 22000 Certified</div>
-        <div class="why-desc">Our parent company AMC Polska holds ISO 22000 certification — the gold standard in food safety management, recognised in every market worldwide.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-globe"></i></div>
-        <div class="why-title">Proven Export Track Record</div>
-        <div class="why-desc">Over 25 years exporting to 40+ countries across Africa, Europe, Asia, and the Americas. We know international logistics inside out.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-flask"></i></div>
-        <div class="why-title">European Quality Standards</div>
-        <div class="why-desc">Every batch is lab-tested for FFA, peroxide value, colour, moisture, and contaminants before shipment. We don't cut corners.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-tags"></i></div>
-        <div class="why-title">Private Label Manufacturing</div>
-        <div class="why-desc">Want to sell under your own brand? We bottle, label, and pack sunflower oil to your specifications — from design to delivery.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-handshake"></i></div>
-        <div class="why-title">Competitive Pricing</div>
-        <div class="why-desc">Direct-from-Europe supply chain means no middlemen. We offer transparent, competitive pricing with flexible MOQs to suit your business.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon"><i class="fas fa-shipping-fast"></i></div>
-        <div class="why-title">Reliable Delivery</div>
-        <div class="why-desc">We manage full export documentation, phytosanitary certificates, and last-mile delivery to Tema Port and across West Africa.</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1402,7 +1280,7 @@
 
     <div class="brands-grid">
       <div class="brand-card fade-up">
-        <img src="images/IMG_4341.JPG" alt="ELBURG Sunflower Oil" class="brand-img-avatar" />
+        <div class="brand-avatar">EL</div>
         <div class="brand-name">ELBURG</div>
         <p class="brand-desc">
           ELBURG is AMC's flagship premium sunflower oil brand — refined, bleached, and
