@@ -43,8 +43,8 @@
     --transition:   .3s ease;
   }
 
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; color: var(--text-body); background: var(--white); line-height: 1.7; overflow-x: hidden; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { font-family: 'Inter', sans-serif; color: var(--text-body); background: var(--white); line-height: 1.7; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
   img  { max-width: 100%; display: block; }
   a    { text-decoration: none; color: inherit; }
   ul   { list-style: none; }
@@ -238,16 +238,16 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://amcpolska.com/wp-content/uploads/2022/06/pouring-oil-car-1.jpg');
+    background-image: url('images/fccb311e-fd14-4aa7-8762-aa4a30473637.JPG');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
+    background-color: var(--green-deep); /* fallback if image is slow */
   }
 
-  /* Very light green-gold overlay — image stays very visible */
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(10,35,22,.62) 0%, rgba(13,43,31,.38) 60%, rgba(10,35,22,.25) 100%);
+    background: linear-gradient(135deg, rgba(10,35,22,.70) 0%, rgba(13,43,31,.50) 60%, rgba(10,35,22,.40) 100%);
   }
 
   .hero-content {
@@ -807,7 +807,10 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
+    /* iOS Safari fix */
+    -webkit-overflow-scrolling: touch;
   }
   .modal-overlay.open { display: flex; }
 
@@ -817,8 +820,11 @@
     padding: 2.6rem 2.4rem 2rem;
     width: 100%;
     max-width: 560px;
-    max-height: 92vh;
+    max-height: 90dvh; /* dvh for mobile browsers with dynamic toolbars */
+    max-height: 90vh;  /* fallback */
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     position: relative;
     animation: modal-in .28s ease;
     box-shadow: 0 32px 80px rgba(0,0,0,.35);
@@ -974,27 +980,22 @@
      RESPONSIVE
   ═══════════════════════════════════════════ */
 
-  /* ── Tablet ── */
+  /* ── Tablet (≤ 1024px) ── */
   @media (max-width: 1024px) {
     .about-grid,
     .product-hero,
-    .quality-inner,
-    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .quality-inner { grid-template-columns: 1fr; gap: 3rem; }
 
     .about-float-card { bottom: -16px; right: -12px; }
     .about-img-wrap img, .product-hero-img img { height: 340px; }
-
     .footer-grid { grid-template-columns: 1fr 1fr; }
-
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-item.tall { grid-row: span 1; }
-
     .brands-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
 
   /* ── Mobile (≤ 768px) ── */
   @media (max-width: 768px) {
-    /* Layout */
     .section-pad { padding: 4rem 0; }
     .container { width: 92%; }
 
@@ -1002,46 +1003,39 @@
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
 
-    /* Hero */
-    .hero-content { padding: 7rem 0 3.5rem; max-width: 100%; }
-    .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
-    .hero-desc { font-size: .95rem; }
-    .hero-btns { flex-direction: column; gap: .75rem; }
-    .hero-btns .btn { justify-content: center; width: 100%; padding: .9rem 1.5rem; font-size: .95rem; }
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-      padding-top: 1.8rem;
-    }
-    .hero-stat-num { font-size: 1.9rem; }
+    /* Hero — svh keeps it from being clipped by mobile browser chrome */
+    #hero { min-height: 100svh; min-height: 100vh; }
+    .hero-content { padding: 6rem 0 3rem; max-width: 100%; }
+    .hero-title { font-size: clamp(1.9rem, 7.5vw, 2.6rem); line-height: 1.15; }
+    .hero-desc { font-size: .92rem; line-height: 1.75; }
+    .hero-btns { flex-direction: column; gap: .7rem; }
+    .hero-btns .btn { width: 100%; justify-content: center; font-size: .95rem; padding: .9rem 1.5rem; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: 1.6rem; }
+    .hero-stat-num { font-size: 1.8rem; }
+    .hero-stat-label { font-size: .68rem; }
 
     /* About */
-    .about-img-wrap img { height: 260px; }
+    .about-img-wrap img { height: 250px; }
     .about-float-card { display: none; }
     .about-highlights { grid-template-columns: 1fr; }
 
     /* Product */
     .product-hero { gap: 2rem; }
-    .product-hero-img img { height: 240px; }
-    .spec-row strong { min-width: 100px; }
-    .product-hero > div:last-child > div[style] { flex-direction: column; }
-    .product-hero > div:last-child > div[style] .btn { justify-content: center; }
+    .product-hero-img img { height: 230px; }
+    .spec-row strong { min-width: 95px; }
 
     /* Brands */
-    .brands-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .brands-grid { grid-template-columns: 1fr; gap: 1.1rem; }
 
     /* Gallery */
-    .gallery-grid { grid-template-columns: 1fr 1fr; gap: .6rem; }
-    .gallery-item img { min-height: 150px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .gallery-item img { min-height: 140px; }
 
     /* Quality */
     .cert-cards { grid-template-columns: 1fr 1fr; }
 
     /* Contact */
-    .contact-grid { gap: 2.5rem; }
     .form-row { grid-template-columns: 1fr; }
-    .form-wrap { padding: 1.6rem; }
 
     /* Footer */
     .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -1049,55 +1043,64 @@
     .footer-desc { max-width: 100%; }
 
     /* Floating buttons */
-    .wa-float { bottom: 1.2rem; right: 1.2rem; width: 52px; height: 52px; font-size: 1.4rem; }
-    #scroll-top { bottom: 4.5rem; right: 1.2rem; }
+    .wa-float { bottom: 1rem; right: 1rem; width: 50px; height: 50px; font-size: 1.3rem; }
+    #scroll-top { bottom: 4.2rem; right: 1rem; width: 40px; height: 40px; }
+
+    /* Modal — slides up from bottom on mobile */
+    .modal-overlay { align-items: flex-end; padding: 0; }
+    .modal-box {
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      max-height: 92dvh;
+      max-height: 92vh;
+      padding: 2rem 1.4rem 2.4rem;
+      animation: modal-slide-up .3s ease;
+    }
+    @keyframes modal-slide-up {
+      from { transform: translateY(100%); opacity: .6; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .modal-title { font-size: 1.25rem; }
   }
 
   /* ── Small phones (≤ 480px) ── */
   @media (max-width: 480px) {
-    .container { width: 94%; }
+    .container { width: 95%; }
+
+    /* Typography */
+    .heading-xl { font-size: 1.65rem; }
+    .heading-lg { font-size: 1.35rem; }
 
     /* Hero */
-    .hero-title { font-size: 1.85rem; line-height: 1.15; }
-    .hero-desc { font-size: .88rem; }
-    .hero-stat-num { font-size: 1.6rem; }
-    .hero-stat-label { font-size: .65rem; }
-
-    /* Sections */
-    .heading-xl { font-size: 1.7rem; }
-    .heading-lg { font-size: 1.4rem; }
+    .hero-title { font-size: 1.75rem; }
+    .hero-desc { font-size: .85rem; }
+    .hero-stat-num { font-size: 1.55rem; }
 
     /* About */
-    .about-img-wrap img { height: 220px; }
-    .highlight-pill { padding: .75rem .9rem; }
+    .about-img-wrap img { height: 210px; }
+    .highlight-pill { padding: .7rem .85rem; }
 
     /* Product */
-    .product-hero-img img { height: 200px; }
-    .spec-row { padding: .7rem .8rem; }
-    .spec-row strong { min-width: 80px; font-size: .78rem; }
-    .spec-row span { font-size: .78rem; }
+    .product-hero-img img { height: 190px; }
+    .spec-row { padding: .65rem .75rem; }
+    .spec-row strong { min-width: 76px; font-size: .77rem; }
+    .spec-row span { font-size: .77rem; }
 
     /* Gallery */
     .gallery-grid { grid-template-columns: 1fr; }
 
-    /* Quality */
-    .cert-cards { grid-template-columns: 1fr 1fr; }
-
     /* Brands */
-    .brand-card { padding: 2rem 1.5rem; }
+    .brand-card { padding: 1.8rem 1.2rem; }
 
-    /* Buttons — ensure tap targets ≥ 44px */
-    .btn { min-height: 44px; padding: .75rem 1.4rem; font-size: .88rem; }
+    /* Tap targets — minimum 48px for thumbs */
+    .btn { min-height: 48px; padding: .8rem 1.4rem; font-size: .88rem; }
+    .hamburger { padding: .5rem; }
+    .contact-card { padding: .9rem 1rem; }
+    .contact-card-value { font-size: .84rem; }
 
-    /* Form */
-    .form-wrap { padding: 1.2rem; }
+    /* CRITICAL: font-size ≥ 16px prevents iOS Safari from auto-zooming on input focus */
     .form-group input,
     .form-group select,
-    .form-group textarea { font-size: .9rem; padding: .75rem .9rem; }
-
-    /* Contact cards */
-    .contact-card { padding: 1rem 1.1rem; }
-    .contact-card-value { font-size: .85rem; }
+    .form-group textarea { font-size: 16px; padding: .75rem .9rem; }
   }
   </style>
 </head>
