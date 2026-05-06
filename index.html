@@ -796,6 +796,78 @@
   #form-status.error   { display: flex; background: #FEF2F2; color: #B91C1C; }
 
   /* ═══════════════════════════════════════════
+     QUOTE MODAL
+  ═══════════════════════════════════════════ */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(3px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal-box {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2.6rem 2.4rem 2rem;
+    width: 100%;
+    max-width: 560px;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modal-in .28s ease;
+    box-shadow: 0 32px 80px rgba(0,0,0,.35);
+  }
+
+  @keyframes modal-in {
+    from { opacity: 0; transform: translateY(24px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.6rem;
+    gap: 1rem;
+  }
+
+  .modal-header-text .label { margin-bottom: .3rem; }
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+
+  .modal-close {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .85rem;
+    color: var(--text-body);
+    flex-shrink: 0;
+    transition: var(--transition);
+  }
+  .modal-close:hover { background: var(--green-dark); color: var(--white); }
+
+  @media (max-width: 480px) {
+    .modal-box { padding: 1.6rem 1.2rem 1.4rem; }
+    .modal-title { font-size: 1.25rem; }
+  }
+
+  /* ═══════════════════════════════════════════
      FOOTER
   ═══════════════════════════════════════════ */
   #footer { background: var(--green-deep); color: rgba(255,255,255,.72); padding: 5rem 0 0; }
@@ -1048,9 +1120,9 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <a href="https://wa.me/233206254453" target="_blank" rel="noopener" class="btn btn-gold nav-cta">
-        <i class="fab fa-whatsapp"></i> Get a Quote
-      </a>
+      <button onclick="openQuoteModal()" class="btn btn-gold nav-cta">
+        <i class="fas fa-file-alt"></i> Get a Quote
+      </button>
 
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -1066,7 +1138,10 @@
   <a href="#product" class="mob-link">Product</a>
   <a href="#brands"  class="mob-link">Brands</a>
   <a href="#contact" class="mob-link">Contact</a>
-  <a href="https://wa.me/233206254453" target="_blank" class="btn btn-gold" style="margin-top:.5rem">
+  <button onclick="openQuoteModal(); closeNav();" class="btn btn-gold mob-link" style="margin-top:.5rem">
+    <i class="fas fa-file-alt"></i> Get a Quote
+  </button>
+  <a href="https://wa.me/233206254453" target="_blank" class="btn btn-outline-white mob-link" style="margin-top:.25rem">
     <i class="fab fa-whatsapp"></i> WhatsApp Us
   </a>
 </nav>
@@ -1434,12 +1509,20 @@
       <div class="gold-bar"></div>
       <h2 class="heading-xl">Contact Us For Prices</h2>
       <p class="body-text" style="max-width:520px">
-        Ready to order or need a quote? Reach us on WhatsApp for the fastest response,
-        or fill in the form and we'll get back to you within one business day.
+        Ready to order or need a quote? Click the button below to fill in your requirements,
+        or reach us directly on WhatsApp for the fastest response.
       </p>
+      <div style="margin-top:1.8rem; display:flex; flex-wrap:wrap; gap:1rem;">
+        <button onclick="openQuoteModal()" class="btn btn-green">
+          <i class="fas fa-file-alt"></i> Get a Quote
+        </button>
+        <a href="https://wa.me/233206254453?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20AMC%20Ghana%20Sunflower%20Oil%20pricing." target="_blank" rel="noopener" class="btn btn-outline-green">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us
+        </a>
+      </div>
     </div>
 
-    <div class="contact-grid">
+    <div class="contact-grid" style="grid-template-columns:1fr; max-width:700px;">
 
       <div class="contact-info-block fade-up">
         <div class="contact-card">
@@ -1474,7 +1557,6 @@
           </div>
         </div>
 
-        <!-- WhatsApp CTA -->
         <a href="https://wa.me/233206254453?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20AMC%20Ghana%20Sunflower%20Oil%20pricing." target="_blank" rel="noopener" class="wa-cta">
           <i class="fab fa-whatsapp"></i>
           <div>
@@ -1496,66 +1578,75 @@
         </div>
       </div>
 
-      <div class="form-wrap fade-up">
-        <div class="form-title">Send Us Your Inquiry</div>
-        <form id="contact-form" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name *</label>
-              <input type="text" id="fname" name="fname" placeholder="John" />
-              <span class="field-error" id="fname-err">Please enter your first name.</span>
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name *</label>
-              <input type="text" id="lname" name="lname" placeholder="Mensah" />
-              <span class="field-error" id="lname-err">Please enter your last name.</span>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="john@company.com" />
-            <span class="field-error" id="email-err">Please enter a valid email address.</span>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="company">Company Name</label>
-              <input type="text" id="company" name="company" placeholder="Your Company Ltd." />
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone / WhatsApp</label>
-              <input type="tel" id="phone" name="phone" placeholder="+233 XX XXX XXXX" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="format">Packaging Format</label>
-            <select id="format" name="format">
-              <option value="">— Select format —</option>
-              <option>Bulk Tanker</option>
-              <option>IBC Tote (1,000L)</option>
-              <option>200L Drum</option>
-              <option>Retail Bottles (Private Label)</option>
-              <option>Multiple / To be discussed</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message *</label>
-            <textarea id="message" name="message" placeholder="Tell us about your requirements — quantity, destination, delivery schedule..."></textarea>
-            <span class="field-error" id="msg-err">Please enter your message.</span>
-          </div>
-
-          <button type="submit" class="btn btn-green" id="submit-btn" style="width:100%; justify-content:center; padding:1rem 2rem; font-size:1rem;">
-            <i class="fas fa-paper-plane"></i> Send Inquiry
-          </button>
-          <div id="form-status"></div>
-        </form>
-      </div>
     </div>
   </div>
 </section>
+
+<!-- ═══════ QUOTE MODAL ═══════ -->
+<div class="modal-overlay" id="quote-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-text">
+        <div class="label">Request a Price</div>
+        <div class="modal-title" id="modal-title">Get a Quote</div>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <form id="contact-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name *</label>
+          <input type="text" id="fname" name="fname" placeholder="John" />
+          <span class="field-error" id="fname-err">Please enter your first name.</span>
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name *</label>
+          <input type="text" id="lname" name="lname" placeholder="Mensah" />
+          <span class="field-error" id="lname-err">Please enter your last name.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" placeholder="john@company.com" />
+        <span class="field-error" id="email-err">Please enter a valid email address.</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input type="text" id="company" name="company" placeholder="Your Company Ltd." />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone / WhatsApp</label>
+          <input type="tel" id="phone" name="phone" placeholder="+233 XX XXX XXXX" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="format">Packaging Format</label>
+        <select id="format" name="format">
+          <option value="">— Select format —</option>
+          <option>Bulk Tanker</option>
+          <option>Retail Bottles (Private Label)</option>
+          <option>Multiple / To be discussed</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" placeholder="Tell us about your requirements — quantity, destination, delivery schedule..."></textarea>
+        <span class="field-error" id="msg-err">Please enter your message.</span>
+      </div>
+
+      <button type="submit" class="btn btn-green" id="submit-btn" style="width:100%; justify-content:center; padding:1rem 2rem; font-size:1rem;">
+        <i class="fas fa-paper-plane"></i> Send Inquiry
+      </button>
+      <div id="form-status"></div>
+    </form>
+  </div>
+</div>
 
 <!-- ═══════ FOOTER ═══════ -->
 <footer id="footer">
@@ -1711,8 +1802,25 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
-  /* Contact form */
-  const form = document.getElementById('contact-form');
+  /* ── Quote Modal ── */
+  const modal = document.getElementById('quote-modal');
+
+  function openQuoteModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('fname').focus(), 100);
+  }
+  function closeQuoteModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeQuoteModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeQuoteModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQuoteModal(); });
+
+  /* ── Contact form ── */
+  const form   = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
 
   function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
@@ -1741,10 +1849,10 @@
     const email   = document.getElementById('email').value.trim();
     const message = document.getElementById('message').value.trim();
     let ok = true;
-    if (!fname)              { setErr('fname',  'fname-err', true); ok = false; }
-    if (!lname)              { setErr('lname',  'lname-err', true); ok = false; }
-    if (!validateEmail(email)) { setErr('email','email-err', true); ok = false; }
-    if (!message)            { setErr('message','msg-err',   true); ok = false; }
+    if (!fname)               { setErr('fname',  'fname-err', true); ok = false; }
+    if (!lname)               { setErr('lname',  'lname-err', true); ok = false; }
+    if (!validateEmail(email)){ setErr('email',  'email-err', true); ok = false; }
+    if (!message)             { setErr('message','msg-err',   true); ok = false; }
     if (!ok) return;
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
@@ -1756,7 +1864,7 @@
       status.innerHTML = '<i class="fas fa-check-circle"></i>&nbsp; Thank you! We\'ll respond within one business day.';
       status.className = 'success';
       status.style.display = 'flex';
-      setTimeout(clearStatus, 7000);
+      setTimeout(() => { clearStatus(); closeQuoteModal(); }, 4000);
     }, 1800);
   });
 </script>
